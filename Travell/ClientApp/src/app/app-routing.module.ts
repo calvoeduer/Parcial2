@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import {PersonaRegistroComponent} from './Venta/persona-registro/persona-registro.component'
-import {PersonaConsultaComponent} from './Venta/persona-consulta/persona-consulta.component'
+import { CreditoRegisterCompomentComponent } from './venta/credito/credito-register-compoment/credito-register-compoment.component';
+import { CreditosComponentComponent } from './venta/credito/creditos-component/creditos-component.component';
 
 const routes: Routes = [
 {
-  path: 'personaConsulta',
-  component: PersonaConsultaComponent
+  path: 'creditos',
+  component: CreditosComponentComponent
   },
   
   {
-  path: 'personaRegistro',
-  component: PersonaRegistroComponent
+  path: 'registrar-credito',
+  component: CreditoRegisterCompomentComponent
+
   }
 ];
-
-
+ 
 @NgModule({
   declarations: [],
   imports: [

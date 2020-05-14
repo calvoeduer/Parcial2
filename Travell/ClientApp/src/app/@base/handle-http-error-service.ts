@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AlertModalComponent } from './alert-modal/alert-modal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HandleHttpErrorService {
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: MatSnackBar) { }
   public handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
    
@@ -26,9 +25,7 @@ export class HandleHttpErrorService {
   }
 
   public log(message: string) {
-    const messageBox = this.modalService.open(AlertModalComponent)
-    messageBox.componentInstance.title = 'Resultado Operación';
-    messageBox.componentInstance.message = message;
+    this.modalService.open(message, "Ok")
   }
   private mostrarError400(error: any): void {
   
@@ -48,9 +45,7 @@ export class HandleHttpErrorService {
       mensajeValidaciones += `<br/>`;
     }
 
-    const modalRef = this.modalService.open(AlertModalComponent);
-    modalRef.componentInstance.title = 'Mensaje de Error';
-    modalRef.componentInstance.message = mensajeValidaciones;
+    this.modalService.open(mensajeValidaciones, "Ok");
 
   }
 
