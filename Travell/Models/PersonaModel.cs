@@ -3,7 +3,7 @@ using Entity;
 
 namespace Travell.Models
 {
-    public class PersonaImputModel
+    public class PersonaInputModel
     {
         [Required(ErrorMessage = "La identificacion es requerida")]
         [StringLength(9, ErrorMessage = "maximo de 9")]
@@ -11,13 +11,10 @@ namespace Travell.Models
 
         [Required(ErrorMessage = "El nombre  es requerido")]
         public string Nombre { get; set; }
-
-        [Required(ErrorMessage = "La ruta es requerida")]
-        public string Ruta { get; set; }
     }
 
 
-    public class PersonaViewModel : PersonaImputModel
+    public class PersonaViewModel : PersonaInputModel
     {
         public PersonaViewModel()
         {
@@ -28,7 +25,6 @@ namespace Travell.Models
         {
             Identificacion = persona.Identificacion;
             Nombre = persona.Nombre;
-            Ruta = persona.Ruta;
         }
     }
 }

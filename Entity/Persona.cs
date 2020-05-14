@@ -5,9 +5,9 @@ namespace Entity
 {
     public class Persona
     {
-        [Key]
+        [Key, MaxLength(10)]
         public string Identificacion { get; set; }
+        [MaxLength(30)]
         public string Nombre { get; set; }
-        public string Ruta { get; set; }
     }
 }

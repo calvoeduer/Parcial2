@@ -3,14 +3,15 @@ using Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Travell.Data;
 
 namespace Logica
 {
     public class PersonaService
     {
-        private readonly PersonaContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public PersonaService(PersonaContext context)
+        public PersonaService(ApplicationDbContext context)
         {
             _context = context;
         }
