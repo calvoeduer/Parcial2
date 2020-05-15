@@ -2,7 +2,7 @@
 
 namespace Datos.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

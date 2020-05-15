@@ -9,8 +9,8 @@ using Travell.Data;
 namespace Datos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200514175503_Inicial")]
-    partial class Inicial
+    [Migration("20200515035544_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

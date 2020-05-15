@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Tiquet } from 'src/app/models/tiquet';
+import { TiquetService } from 'src/app/services/tiquet.service';
 
 @Component({
   selector: 'app-creditos-component',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreditosComponentComponent implements OnInit {
 
-  constructor() { }
+  tiquetes: Tiquet[];
+
+  constructor(private tiquetService : TiquetService) { }
 
   ngOnInit(): void {
+    this.tiquetService.getTiquets().subscribe(result => {
+      this.tiquetes = result;
+    } )
   }
 
 }

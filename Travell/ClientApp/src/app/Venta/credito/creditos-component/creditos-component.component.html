@@ -1,1 +1,30 @@
-<p>creditos-component works!</p>
+
+<blockquote class="blockquote text-center">
+    <p class="mb-0" class="display-3 colorLetras">Consulta de tiquetes</p>
+    <footer class="blockquote-footer">Consultar los tiquetes</footer>
+  </blockquote>
+
+
+  <table class="table table-striped">
+    <thead>
+        <tr class="table-header">
+            <th scope="col">Tiquete ID</th>
+            <th scope="col">Persona ID</th>
+            <th scope="col">Ruta ID</th>
+            <th scope="col">Ruta Nomre</th>
+            <th scope="col">Nombre Persona</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let t of tiquetes">
+            <td>{{ t.id }}</td>
+            <td>{{ t.personaId }}</td>
+            <td>{{ t.rutaId }}</td>
+            <td>{{ t.ruta.nombre }}</td>
+            <td>{{ t.persona.nombre }}</td>
+            
+    
+        </tr>
+    </tbody>
+</table>
