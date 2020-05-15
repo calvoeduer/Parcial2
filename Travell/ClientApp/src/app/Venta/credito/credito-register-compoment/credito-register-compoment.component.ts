@@ -40,15 +40,15 @@ export class CreditoRegisterCompomentComponent implements OnInit {
   private buidForm() {
     this.creditoGroup = this.formBuilder.group({
       idPersona: ["", [Validators.required, Validators.maxLength(10)]],
-      idRuta: [""]
+      idRuta: ["", [Validators.required]]
     });
   }
-
+//men ? ? ? 
   onSubmit() {
     if (this.creditoGroup.valid) {
       let tiquet: Tiquet = new Tiquet();
       tiquet.personaId = this.creditoGroup.controls['idPersona'].value;
-      tiquet.rutaId = this.creditoGroup.controls['idRuta'].value;
+      tiquet.rutaId =+ this.creditoGroup.controls['idRuta'].value;
 
       this.tiquetService.saveTiquet(tiquet).subscribe(result => {
         if (result) {

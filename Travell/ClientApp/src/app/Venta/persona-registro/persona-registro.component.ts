@@ -15,7 +15,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 })
 export class PersonaRegistroComponent implements OnInit {
   formGroup: FormGroup;
-  persona: Persona;
+  persona: Persona = new Persona();
   constructor(
     private tiquetService: TiquetService,
     private formBuilder: FormBuilder,
@@ -39,7 +39,7 @@ export class PersonaRegistroComponent implements OnInit {
 
   onSubmit() {
     if (this.formGroup.valid) {
-      this.persona.identidicacion = this.formGroup.controls['identificacion'].value;
+      this.persona.identificacion = this.formGroup.controls['identificacion'].value;
       this.persona.nombre = this.formGroup.controls['nombre'].value;
       this.tiquetService.savePersona(this.persona).subscribe((result) => {
         if (result) {

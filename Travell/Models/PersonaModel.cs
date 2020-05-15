@@ -6,7 +6,6 @@ namespace Travell.Models
     public class PersonaInputModel
     {
         [Required(ErrorMessage = "La identificacion es requerida")]
-        [StringLength(9, ErrorMessage = "maximo de 9")]
         public string Identificacion { get; set; }
 
         [Required(ErrorMessage = "El nombre  es requerido")]

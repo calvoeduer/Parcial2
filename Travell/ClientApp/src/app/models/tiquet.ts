@@ -4,7 +4,7 @@ import { Persona } from "./persona";
 export class Tiquet {
     id:string;
     personaId:string;
-    rutaId:string;
+    rutaId:number;
     ruta:Ruta;
     persona:Persona;
 }
