@@ -4,10 +4,25 @@
     <form [formGroup]="creditoGroup">
 
         <div class="form-element">
-            <label for="id">Id</label>
-            <input type="text" name="id" id="id" class="form-input" placeholder="Enter your id" formControlName="idPersona"> 
-            <small class="form-help">Enter your id please.</small>
+            <label for="id">Identificacion</label>
+            <input type="text" name="id" id="id" class="form-input" placeholder="Ingrese su identificacion" formControlName="idPersona"> 
+            <small class="form-help">Ingrese identificacion por favor</small>
         </div>
+       
+        <select class="custom-select" id="ruta" name="ruta" formControlName="idRuta">
+            
+            <option *ngFor="let item of rutas" value="{{item.nombre}}">{{item.nombre}}</option>
+        </select>
+
+        <div class="text-center">
+
+            <button mat-stroked-button style="border-color: #339240; margin-right: 20px; margin-top: 20px;"  (click)="onSubmit()" >Registrar</button>
+ 
+            <button mat-stroked-button style="border-color: #339240; " type="reset">Limpiar</button>
+ 
+         </div>
+
+
 
     </form>
 
