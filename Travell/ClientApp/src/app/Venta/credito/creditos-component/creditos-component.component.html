@@ -5,6 +5,13 @@
   </blockquote>
 
 
+  <div class="col-6" style="margin-left: 20%; margin-right: 20%; margin-top: 40px; margin-bottom: 40px;" class="text-center">
+          
+    <input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Texto de filtro por nombre o ruta" >
+      
+  </div>
+
+
   <table class="table table-striped">
     <thead>
         <tr class="table-header">
@@ -18,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr  *ngFor="let t of tiquetes">
+        <tr  *ngFor="let t of tiquetes | filtrotiquete:searchText">
             <td>{{ t.id }}</td>
             <td>{{ t.personaId }}</td>
             <td>{{ t.rutaId }}</td>

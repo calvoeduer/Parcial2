@@ -9,11 +9,13 @@ import { TiquetService } from 'src/app/services/tiquet.service';
 })
 export class CreditosComponentComponent implements OnInit {
 
+  searchText:string;
   tiquetes: Tiquet[];
 
   constructor(private tiquetService : TiquetService) { }
 
   ngOnInit(): void {
+    this.searchText="";
     this.tiquetService.getTiquets().subscribe(result => {
       this.tiquetes = result;
     } )

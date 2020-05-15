@@ -15,6 +15,7 @@ import { CreditosComponentComponent } from './venta/credito/creditos-component/c
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { PersonaRegistroComponent } from './venta/persona-registro/persona-registro.component';
+import { FiltrotiquetePipe } from './pipe/filtrotiquete.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PersonaRegistroComponent } from './venta/persona-registro/persona-regis
     PersonaRegistroComponent,
     CreditoRegisterCompomentComponent,
     CreditosComponentComponent,
+    FiltrotiquetePipe,
     
   ],
   
