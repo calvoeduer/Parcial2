@@ -1,4 +1,7 @@
-<h1 mat-dialog-title>Persona no registrada, registrela</h1>
+<blockquote class="blockquote text-center">
+  <p class="mb-0" class="display-3 colorLetras">Registre la persona</p>
+  <footer class="blockquote-footer">Es la primera vez que adquiere un tiquete, debe registrarse</footer>
+</blockquote>
 <div mat-dialog-content>
   <form [formGroup]="formGroup">
     <div>
@@ -9,15 +12,14 @@
           disabled
           formControlName="identificacion"
     
-          readonly="true"
         />
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field>
+      
         <mat-label>Nombre</mat-label>
         <input matInput disabled formControlName="nombre" />
-      </mat-form-field>
+      
     </div>
   </form>
   <div mat-dialog-actions>

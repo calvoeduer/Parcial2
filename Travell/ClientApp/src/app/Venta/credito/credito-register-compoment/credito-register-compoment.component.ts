@@ -52,17 +52,19 @@ export class CreditoRegisterCompomentComponent implements OnInit {
 
       this.tiquetService.saveTiquet(tiquet).subscribe(result => {
         if (result) {
-          this.router.navigateByUrl('creditos');
+          
+          return;
         } else{
           const matRef = this.dialog.open(PersonaRegistroComponent, {
-						width: '700px',
+						width: '1200px',
 						data: this.creditoGroup.controls['idPersona'].value
           });
           
+          
           matRef.afterClosed().subscribe((result) => {
 						if (result) {
-							this.snackBar.open('Persona ${result.nombre} registrada con éxito.', 'Ok', {
-								duration: 3000
+							this.snackBar.open('Persona  registrada con éxito.', 'Ok', {
+								duration: 1000
 							});
 						}
 					});

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Travell.Data;
 using Travell.Models;
+using Microsoft.AspNetCore.SignalR;
+using Travell.Hubs;
 
 namespace Travell.Controllers
 {
@@ -16,26 +18,29 @@ namespace Travell.Controllers
     public class TiquetsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
-        public TiquetsController(ApplicationDbContext context)
+        private readonly IHubContext<TravelHub> _hubContext;
+        public TiquetsController(ApplicationDbContext context, IHubContext<TravelHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
+
         }
 
         [HttpGet("[action]")]
-        public  ActionResult<IEnumerable<RutaViewModel>> Rutas()
+        public async Task <ActionResult<IEnumerable<RutaViewModel>>> Rutas()
         {
-            return Ok(_context.Rutas.Select(r => new RutaViewModel(r)).ToList());
+           
+             return Ok( await _context.Rutas.Select(r => new RutaViewModel(r)).ToListAsync());
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<TiquetViewModel>> Tiquetes()
+        public async Task <ActionResult<IEnumerable<TiquetViewModel>>> Tiquetes()
         {
-            return Ok(_context.Tiquets.Include(p => p.Persona).Include(p => p.Ruta).Select(t => new TiquetViewModel(t)).ToList());
+            return Ok(await _context.Tiquets.Include(p => p.Persona).Include(p => p.Ruta).Select(t => new TiquetViewModel(t)).ToListAsync());
         }
 
         [HttpPost("Personas")]
-        public ActionResult<PersonaViewModel> PostPersona([FromBody]PersonaInputModel personaModel)
+        public async Task <ActionResult<PersonaViewModel>> PostPersona([FromBody]PersonaInputModel personaModel)
         {
             Persona persona = new Persona()
             {
@@ -44,13 +49,13 @@ namespace Travell.Controllers
             };
 
             _context.Add(persona);
-            _context.SaveChanges();
+          await  _context.SaveChangesAsync();
 
             return new PersonaViewModel(persona);
         }
 
         [HttpPost]
-        public ActionResult<TiquetViewModel> PostTiquete([FromBody]TiquetInputModel tiqueteModel)
+        public async Task <ActionResult<TiquetViewModel>> PostTiquete([FromBody]TiquetInputModel tiqueteModel)
         {
             Tiquet tiquet = new Tiquet()
             {
@@ -59,7 +64,7 @@ namespace Travell.Controllers
             };
 
             _context.Add(tiquet);
-            _context.SaveChanges();
+           await _context.SaveChangesAsync();
 
             return new TiquetViewModel(tiquet);
         }

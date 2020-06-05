@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
 using Travell.Data;
+using Travell.Hubs;
 
 namespace Travell
 {
@@ -35,14 +36,14 @@ namespace Travell
                 s.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Travel API",
+                    Title = "Travell",
                     Description = "Travel API - ASP.NET Core Web",
                     TermsOfService = new Uri("https://cla.dotnetfoundation.org/"),
                     Contact = new OpenApiContact
                     {
-                        Name = "Eduer Calvo Acuña",
+                        Name = "Eduer Calvo Acuï¿½a",
                         Email = "calvoeduer@gmail.com",
-                        Url = new Uri("https://github.com/cantte/")
+                        Url = new Uri("https://github.com/calvoeduer/")
                     },
                     License = new OpenApiLicense
                     {
@@ -52,18 +53,24 @@ namespace Travell
                 });
             });
 
+            services.AddCors();
+            services.AddSignalR();
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
+
+                
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext context)
         {
+           // context.Database.Migrate();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -95,6 +102,7 @@ namespace Travell
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                    endpoints.MapHub<TravelHub>("/travelHub");
             });
 
             app.UseSpa(spa =>
